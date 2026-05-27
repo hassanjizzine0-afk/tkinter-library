@@ -134,7 +134,7 @@ Point,Q1,Q2,Q3,Q4,Q5,Time
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-
+## 💻 **Полный код программы**
 ```python
 import tkinter as tk
 from tkinter import ttk
