@@ -374,6 +374,21 @@ if __name__ == "__main__":
 python3 trajectory_gui.py
 ```
 
+
+
+![image_alt](https://github.com/hassanjizzine0-afk/tkinter-library/blob/main/image.png?raw=true)
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 ## 📝 **Резюме**
