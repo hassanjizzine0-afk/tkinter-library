@@ -1,6 +1,4 @@
-Here is your text with a **more powerful structure** for GitHub Markdown:
 
-```markdown
 # 🎯 GUI Interface for Trajectory Planning of a 5-DOF Mechanism
 
 ---
