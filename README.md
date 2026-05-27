@@ -1,84 +1,84 @@
-# 🎯 **GUI Interface for Trajectory Planning of a 5-DOF Mechanism**
+# 🎯 **Графический интерфейс для планирования траектории 5-звенного механизма**
 
-## 📋 **General Information**
+## 📋 **Общая информация**
 
-### **What is this program?**
-This is a **Graphical User Interface (GUI)** for planning trajectories of a robotic mechanism with **5 degrees of freedom (DOF)**. The program allows users to define multiple waypoints (coordinate systems) that the mechanism should follow.
+### **Что это за программа?**
+Это **графический пользовательский интерфейс (GUI)** для планирования траектории движения роботизированного механизма с **5 степенями свободы (СО)**. Программа позволяет пользователю задавать несколько опорных точек (координатных систем), через которые должен пройти механизм.
 
-### **Why do we need this interface?**
-- **User-friendly input**: Instead of writing code or editing text files manually
-- **Visual organization**: All trajectory parameters are organized in clear sections
-- **Error prevention**: Validates inputs before saving
-- **Flexibility**: Supports two different input modes
+### **Зачем нужен этот интерфейс?**
+- **Удобный ввод данных**: не нужно писать код или вручную редактировать текстовые файлы
+- **Визуальная организация**: все параметры траектории собраны в понятные разделы
+- **Защита от ошибок**: проверка ввода перед сохранением
+- **Гибкость**: поддержка двух режимов ввода координат
 
 ---
 
-## 🔧 **How the Program Works**
+## 🔧 **Как работает программа**
 
-### **Overall Algorithm:**
+### **Общий алгоритм:**
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     PROGRAM FLOW                                 │
+│                     АЛГОРИТМ РАБОТЫ                              │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
-│  1. USER SELECTS INPUT MODE                                      │
-│     ├── Cartesian Mode (X, Y, Z, Alpha, Beta, Gamma)            │
-│     └── Generalized Mode (Q1, Q2, Q3, Q4, Q5)                   │
+│  1. ПОЛЬЗОВАТЕЛЬ ВЫБИРАЕТ РЕЖИМ ВВОДА                            │
+│     ├── Декартовы координаты (X, Y, Z, Alpha, Beta, Gamma)      │
+│     └── Обобщенные координаты (Q1, Q2, Q3, Q4, Q5)              │
 │                         ↓                                         │
-│  2. USER ENTERS NUMBER OF POINTS (N)                             │
-│     Example: N = 3 means 3 waypoints                            │
+│  2. ПОЛЬЗОВАТЕЛЬ ВВОДИТ КОЛИЧЕСТВО ТОЧЕК (N)                     │
+│     Пример: N = 3 означает 3 опорные точки                      │
 │                         ↓                                         │
-│  3. USER CLICKS "Создать поля"                                   │
-│     → Program dynamically creates N rows of input fields        │
+│  3. ПОЛЬЗОВАТЕЛЬ НАЖИМАЕТ "Создать поля"                         │
+│     → Программа автоматически создает N строк для ввода          │
 │                         ↓                                         │
-│  4. USER FILLS COORDINATES FOR EACH POINT                        │
-│     Point 1: X₁, Y₁, Z₁, α₁, β₁, γ₁                             │
-│     Point 2: X₂, Y₂, Z₂, α₂, β₂, γ₂                             │
-│     Point 3: X₃, Y₃, Z₃, α₃, β₃, γ₃                             │
+│  4. ПОЛЬЗОВАТЕЛЬ ЗАПОЛНЯЕТ КООРДИНАТЫ ДЛЯ КАЖДОЙ ТОЧКИ           │
+│     Точка 1: X₁, Y₁, Z₁, α₁, β₁, γ₁                             │
+│     Точка 2: X₂, Y₂, Z₂, α₂, β₂, γ₂                             │
+│     Точка 3: X₃, Y₃, Z₃, α₃, β₃, γ₃                             │
 │                         ↓                                         │
-│  5. USER CLICKS "Сохранить все точки"                            │
-│     → Program saves all data to a text file                      │
+│  5. ПОЛЬЗОВАТЕЛЬ НАЖИМАЕТ "Сохранить все точки"                  │
+│     → Программа сохраняет все данные в текстовый файл             │
 │                         ↓                                         │
-│  6. MATLAB READS THE FILE                                        │
-│     → Calculates trajectory (dynamics, velocities, etc.)        │
+│  6. MATLAB ЧИТАЕТ ФАЙЛ                                           │
+│     → Выполняет расчет траектории (динамика, скорости и т.д.)    │
 │                                                                  │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 📊 **Two Input Modes Explained**
+## 📊 **Два режима ввода**
 
-### **Mode 1: Cartesian Coordinates**
+### **Режим 1: Декартовы координаты**
 ```
-Input: X, Y, Z, Alpha, Beta, Gamma
+Ввод: X, Y, Z, Alpha, Beta, Gamma
 
-Purpose: 
-- X, Y, Z = Position of the end effector (tool tip)
-- Alpha, Beta, Gamma = Orientation (rotation angles)
+Назначение: 
+- X, Y, Z = положение рабочего органа (конечная точка)
+- Alpha, Beta, Gamma = ориентация (углы поворота)
 
-When to use:
-When you know WHERE you want the tool to be in space
+Когда использовать:
+Когда вы знаете, ГДЕ должен находиться инструмент в пространстве
 ```
 
-### **Mode 2: Generalized Coordinates (Q1-Q5)**
+### **Режим 2: Обобщенные координаты (Q1-Q5)**
 ```
-Input: Q1, Q2, Q3, Q4, Q5
+Ввод: Q1, Q2, Q3, Q4, Q5
 
-Purpose:
-- These are JOINT ANGLES or actuator positions
-- 5 values because mechanism has 5 motors
+Назначение:
+- Это УГЛЫ СОЕДИНЕНИЙ или положения приводов
+- 5 значений, потому что механизм имеет 5 двигателей
 
-When to use:
-When you know exactly how each joint should be positioned
+Когда использовать:
+Когда вы точно знаете, как должен быть расположен каждый сустав
 ```
 
 ---
 
-## 🗂️ **File Output Format**
+## 🗂️ **Формат выходных файлов**
 
-### **Cartesian Mode Output (coordinates.txt):**
+### **Вывод для декартового режима (coordinates.txt):**
 ```
 Point,X,Y,Z,Alpha,Beta,Gamma,Time
 1,10,10,5,0,0,0,2
@@ -86,7 +86,7 @@ Point,X,Y,Z,Alpha,Beta,Gamma,Time
 3,30,20,10,20,10,0,2
 ```
 
-### **Generalized Mode Output (generalized_coordinates.txt):**
+### **Вывод для обобщенного режима (generalized_coordinates.txt):**
 ```
 Point,Q1,Q2,Q3,Q4,Q5,Time
 1,15,25,30,10,5,2
@@ -96,7 +96,7 @@ Point,Q1,Q2,Q3,Q4,Q5,Time
 
 ---
 
-## 📐 **Visual Layout of the GUI**
+## 📐 **Внешний вид интерфейса**
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -136,7 +136,7 @@ Point,Q1,Q2,Q3,Q4,Q5,Time
 
 ---
 
-## 💻 **Complete Code**
+## 💻 **Полный код программы**
 
 ```python
 import tkinter as tk
@@ -149,11 +149,11 @@ class TrajectoryGUI:
         self.root.title("Параметры траектории")
         self.root.geometry("1100x750")
         
-        # Store all point entries for BOTH modes
+        # Хранение данных для обоих режимов
         self.points_data_cartesian = []
         self.points_data_generalized = []
         
-        # === SECTION 1: Mode Selection ===
+        # === РАЗДЕЛ 1: Выбор режима ===
         mode_frame = ttk.LabelFrame(root, text="Тип ввода")
         mode_frame.pack(padx=10, pady=10, fill="x")
         
@@ -169,7 +169,7 @@ class TrajectoryGUI:
                                             command=self.switch_mode)
         generalized_radio.pack(side=tk.LEFT, padx=10, pady=5)
         
-        # === SECTION 2: Number of Points ===
+        # === РАЗДЕЛ 2: Количество точек ===
         n_points_frame = ttk.LabelFrame(root, text="Количество координатных систем")
         n_points_frame.pack(padx=10, pady=10, fill="x")
         
@@ -180,11 +180,11 @@ class TrajectoryGUI:
         self.generate_btn = ttk.Button(n_points_frame, text="Создать поля", command=self.generate_fields)
         self.generate_btn.pack(side=tk.LEFT, padx=10, pady=5)
         
-        # === SECTION 3: Dynamic Points Frame ===
+        # === РАЗДЕЛ 3: Динамические поля ===
         self.points_frame = ttk.LabelFrame(root, text="Координатные системы (точки траектории)")
         self.points_frame.pack(padx=10, pady=10, fill="both", expand=True)
         
-        # === SECTION 4: Time Settings ===
+        # === РАЗДЕЛ 4: Время ===
         time_frame = ttk.LabelFrame(root, text="Параметры времени")
         time_frame.pack(padx=10, pady=10, fill="x")
         
@@ -192,32 +192,31 @@ class TrajectoryGUI:
         self.time_entry = ttk.Entry(time_frame, width=10)
         self.time_entry.grid(row=0, column=1, padx=5, pady=5)
         
-        # === SECTION 5: Save Button ===
+        # === РАЗДЕЛ 5: Кнопка сохранения ===
         self.save_btn = ttk.Button(root, text="Сохранить все точки", command=self.save_all_points)
         self.save_btn.pack(padx=10, pady=10)
         
-        # Initial state
+        # Начальное состояние
         self.save_btn.config(state='disabled')
         self.current_mode = "coordinates"
     
     def switch_mode(self):
-        """Switch between Cartesian and Generalized modes"""
+        """Переключение между режимами"""
         self.current_mode = self.input_mode.get()
-        # Regenerate fields if points already exist
         if hasattr(self, 'n_points_entry') and self.n_points_entry.get():
             self.generate_fields()
     
     def generate_fields(self):
-        """Create input fields for each point based on selected mode"""
+        """Создание полей для каждой точки"""
         
-        # Clear existing fields
+        # Очистка существующих полей
         for widget in self.points_frame.winfo_children():
             widget.destroy()
         
         self.points_data_cartesian = []
         self.points_data_generalized = []
         
-        # Get number of points
+        # Получение количества точек
         try:
             n = int(self.n_points_entry.get())
         except ValueError:
@@ -226,7 +225,7 @@ class TrajectoryGUI:
         if n <= 0:
             return
         
-        # Create headers based on mode
+        # Заголовки в зависимости от режима
         if self.current_mode == "coordinates":
             headers = ["Точка", "X", "Y", "Z", "Alpha", "Beta", "Gamma"]
         else:
@@ -236,82 +235,68 @@ class TrajectoryGUI:
             ttk.Label(self.points_frame, text=header, font=('Arial', 10, 'bold')).grid(
                 row=0, column=col, padx=5, pady=10)
         
-        # Create rows for each point
+        # Создание строк для каждой точки
         for i in range(n):
             if self.current_mode == "coordinates":
                 point_entries = {}
                 
-                # Point number label
                 ttk.Label(self.points_frame, text=f"Система {i+1}:").grid(
                     row=i+1, column=0, padx=5, pady=5)
                 
-                # X entry
                 entry_x = ttk.Entry(self.points_frame, width=10)
                 entry_x.grid(row=i+1, column=1, padx=5, pady=5)
                 point_entries['x'] = entry_x
                 
-                # Y entry
                 entry_y = ttk.Entry(self.points_frame, width=10)
                 entry_y.grid(row=i+1, column=2, padx=5, pady=5)
                 point_entries['y'] = entry_y
                 
-                # Z entry
                 entry_z = ttk.Entry(self.points_frame, width=10)
                 entry_z.grid(row=i+1, column=3, padx=5, pady=5)
                 point_entries['z'] = entry_z
                 
-                # Alpha entry
                 entry_alpha = ttk.Entry(self.points_frame, width=10)
                 entry_alpha.grid(row=i+1, column=4, padx=5, pady=5)
                 point_entries['alpha'] = entry_alpha
                 
-                # Beta entry
                 entry_beta = ttk.Entry(self.points_frame, width=10)
                 entry_beta.grid(row=i+1, column=5, padx=5, pady=5)
                 point_entries['beta'] = entry_beta
                 
-                # Gamma entry
                 entry_gamma = ttk.Entry(self.points_frame, width=10)
                 entry_gamma.grid(row=i+1, column=6, padx=5, pady=5)
                 point_entries['gamma'] = entry_gamma
                 
                 self.points_data_cartesian.append(point_entries)
                 
-            else:  # Generalized mode (Q1-Q5)
+            else:
                 point_entries = {}
                 
-                # Point number label
                 ttk.Label(self.points_frame, text=f"Система {i+1}:").grid(
                     row=i+1, column=0, padx=5, pady=5)
                 
-                # Q1 entry
                 entry_q1 = ttk.Entry(self.points_frame, width=10)
                 entry_q1.grid(row=i+1, column=1, padx=5, pady=5)
                 point_entries['q1'] = entry_q1
                 
-                # Q2 entry
                 entry_q2 = ttk.Entry(self.points_frame, width=10)
                 entry_q2.grid(row=i+1, column=2, padx=5, pady=5)
                 point_entries['q2'] = entry_q2
                 
-                # Q3 entry
                 entry_q3 = ttk.Entry(self.points_frame, width=10)
                 entry_q3.grid(row=i+1, column=3, padx=5, pady=5)
                 point_entries['q3'] = entry_q3
                 
-                # Q4 entry
                 entry_q4 = ttk.Entry(self.points_frame, width=10)
                 entry_q4.grid(row=i+1, column=4, padx=5, pady=5)
                 point_entries['q4'] = entry_q4
                 
-                # Q5 entry
                 entry_q5 = ttk.Entry(self.points_frame, width=10)
                 entry_q5.grid(row=i+1, column=5, padx=5, pady=5)
                 point_entries['q5'] = entry_q5
                 
                 self.points_data_generalized.append(point_entries)
         
-        # Enable save button
         self.save_btn.config(state='normal')
         
         if self.current_mode == "coordinates":
@@ -320,7 +305,7 @@ class TrajectoryGUI:
             print(f"✅ Создано {n} координатных систем (Обобщенные: Q1,Q2,Q3,Q4,Q5)")
     
     def save_all_points(self):
-        """Save all coordinate systems to file based on mode"""
+        """Сохранение всех точек в файл"""
         
         time_between = self.time_entry.get() or "1"
         
@@ -329,7 +314,6 @@ class TrajectoryGUI:
                 print("❌ Нет точек для сохранения!")
                 return
             
-            # Save Cartesian coordinates to file
             with open('coordinates.txt', 'w') as f:
                 f.write("Point,X,Y,Z,Alpha,Beta,Gamma,Time\n")
                 
@@ -345,12 +329,11 @@ class TrajectoryGUI:
             
             print(f"✅ Сохранено {len(self.points_data_cartesian)} координатных систем в coordinates.txt")
             
-        else:  # Generalized mode (Q1-Q5)
+        else:
             if not self.points_data_generalized:
                 print("❌ Нет точек для сохранения!")
                 return
             
-            # Save Generalized coordinates to file
             with open('generalized_coordinates.txt', 'w') as f:
                 f.write("Point,Q1,Q2,Q3,Q4,Q5,Time\n")
                 
@@ -365,7 +348,6 @@ class TrajectoryGUI:
             
             print(f"✅ Сохранено {len(self.points_data_generalized)} координатных систем в generalized_coordinates.txt")
         
-        # Show what was saved
         print("\n📁 Содержимое файла:")
         if self.current_mode == "coordinates":
             with open('coordinates.txt', 'r') as f:
@@ -375,7 +357,7 @@ class TrajectoryGUI:
                 print(f.read())
 
 
-# Run the application
+# Запуск приложения
 if __name__ == "__main__":
     root = tk.Tk()
     app = TrajectoryGUI(root)
@@ -384,24 +366,24 @@ if __name__ == "__main__":
 
 ---
 
-## 🚀 **How to Run**
+## 🚀 **Как запустить**
 
 ```bash
-# Save the code as trajectory_gui.py
-# Then run:
+# Сохраните код как trajectory_gui.py
+# Затем выполните:
 python3 trajectory_gui.py
 ```
 
 ---
 
-## 📝 **Summary**
+## 📝 **Резюме**
 
-| Feature | Description |
-|---------|-------------|
-| **Input Modes** | Cartesian (X,Y,Z,α,β,γ) OR Generalized (Q1-Q5) |
-| **Multiple Points** | User defines N waypoints |
-| **Dynamic Fields** | Fields created automatically based on N |
-| **Time Parameter** | Time between consecutive points |
-| **Output Format** | CSV text file for MATLAB |
+| Функция | Описание |
+|---------|----------|
+| **Режимы ввода** | Декартовы (X,Y,Z,α,β,γ) ИЛИ Обобщенные (Q1-Q5) |
+| **Несколько точек** | Пользователь задает N опорных точек |
+| **Динамические поля** | Поля создаются автоматически в зависимости от N |
+| **Время** | Время между последовательными точками |
+| **Выходной формат** | CSV текстовый файл для MATLAB |
 
-This GUI serves as the **front-end interface** for your trajectory planning system, making it easy to input multiple waypoints that will later be processed by MATLAB for dynamics calculations and trajectory optimization.
+Этот графический интерфейс служит **интерфейсом переднего плана** для вашей системы планирования траектории, позволяя легко вводить множество опорных точек, которые затем будут обработаны MATLAB для расчета динамики и оптимизации траектории.
